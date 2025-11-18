@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Store Line OA</title>
+    <title>สยามศรัทธา (Official)</title> 
+    
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #06C755; /* สีเขียว LINE */
+            --primary-color: #06C755;
             --primary-dark: #05a546;
             --text-color: #333;
             --bg-color: #f4f6f9;
@@ -22,10 +23,10 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
-            padding-bottom: 100px; /* เผื่อที่ให้ปุ่มตะกร้าในมือถือ */
+            padding-bottom: 100px;
         }
 
-        /* --- Header & Hero Section --- */
+        /* --- Header & Hero --- */
         header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -37,219 +38,153 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .brand-name { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
-        .brand-name span { color: #333; }
-
+        .brand-name { font-size: 1.5rem; font-weight: 700; color: #333; } 
+        .brand-name span { color: var(--primary-color); } 
+        
         .hero-banner {
-            width: 100%;
-            height: 250px;
-            /* เปลี่ยนรูปปกตรงนี้ */
+            width: 100%; height: 250px;
             background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .hero-overlay {
-            background: rgba(0,0,0,0.4);
-            width: 100%; height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.4); width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 2rem; font-weight: bold;
         }
 
-        /* --- Layout Container --- */
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 30px;
-        }
+        /* --- Layout --- */
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; display: flex; gap: 30px; }
 
-        /* --- Products Area --- */
+        /* --- Search --- */
+        .search-container {
+            margin-bottom: 30px; display: flex; align-items: center;
+            border: 2px solid #ccc; border-radius: 50px; background: white;
+            padding: 5px 15px;
+        }
+        .search-container input { flex-grow: 1; border: none; padding: 8px; font-size: 1rem; outline: none; font-family: 'Prompt', sans-serif; }
+        .search-container i { color: #999; margin-right: 10px; }
+
+        /* --- Products --- */
         .product-area { flex: 1; }
         .section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .section-title::before { content: ''; width: 5px; height: 25px; background: var(--primary-color); border-radius: 2px; display: block; }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid transparent;
-        }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
         
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: var(--primary-color);
+        .product-card {
+            background: var(--card-bg); border-radius: 15px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
         }
-
-        .product-img-box {
-            height: 180px;
-            overflow: hidden;
-            position: relative;
-        }
-        .product-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        
+        .product-img-box { height: 180px; overflow: hidden; cursor: pointer; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .product-card:hover .product-img { transform: scale(1.1); }
-
-        .product-info { padding: 15px; text-align: left; }
-        .product-name { font-size: 1rem; font-weight: 600; margin-bottom: 5px; color: #444; height: 2.4rem; overflow: hidden; }
+        
+        .product-info { padding: 15px; }
+        .product-name { font-size: 1rem; font-weight: 600; margin-bottom: 5px; height: 2.4rem; overflow: hidden; cursor: pointer; }
         .product-price { color: var(--primary-color); font-size: 1.2rem; font-weight: 700; }
         
         .btn-add {
-            margin-top: 10px;
-            width: 100%;
-            background: white;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 8px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            font-family: 'Prompt', sans-serif;
+            margin-top: 10px; width: 100%; background: white;
+            border: 2px solid var(--primary-color); color: var(--primary-color);
+            padding: 8px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.2s;
         }
-        .btn-add:hover {
-            background: var(--primary-color);
-            color: white;
-        }
+        .btn-add:hover { background: var(--primary-color); color: white; }
 
-        /* --- Cart Sidebar / Floating (Responsive) --- */
-        .cart-area {
-            width: 320px;
-            flex-shrink: 0;
-        }
-        
-        .cart-box {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 100px; /* ให้ตะกร้าตามลงมาเวลาเลื่อนจอ */
-        }
-
+        /* --- Cart Sidebar --- */
+        .cart-area { width: 320px; flex-shrink: 0; }
+        .cart-box { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: sticky; top: 100px; }
         .cart-header { font-weight: 700; font-size: 1.2rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; }
-        
         .cart-list { list-style: none; padding: 0; margin: 0; max-height: 400px; overflow-y: auto; }
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f5f5f5; font-size: 0.9rem; }
-        .item-name { flex: 1; padding-right: 10px; }
-        .item-price { font-weight: 600; color: #666; }
-        .btn-remove { color: #ff4d4f; background: none; border: none; cursor: pointer; padding: 5px; font-size: 0.8rem; }
-
+        .btn-remove { color: #ff4d4f; background: none; border: none; cursor: pointer; }
+        
         .cart-summary { margin-top: 20px; border-top: 2px solid #f0f0f0; padding-top: 15px; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; color: #333; margin-bottom: 15px; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; }
         
         .btn-checkout {
-            width: 100%;
-            background: linear-gradient(45deg, #06C755, #00d65b);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
+            width: 100%; background: linear-gradient(45deg, #06C755, #00d65b);
+            color: white; border: none; padding: 15px; border-radius: 12px;
+            font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 15px;
             box-shadow: 0 5px 15px rgba(6, 199, 85, 0.3);
-            transition: 0.2s;
-            font-family: 'Prompt', sans-serif;
         }
-        .btn-checkout:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(6, 199, 85, 0.4); }
         .btn-checkout:disabled { background: #ccc; cursor: not-allowed; box-shadow: none; }
 
-        /* Floating Cart Button for Mobile */
+        /* --- Mobile UI --- */
         .mobile-cart-btn {
-            display: none; /* ซ่อนใน PC */
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary-color);
-            color: white;
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            z-index: 200;
-            cursor: pointer;
+            display: none; position: fixed; bottom: 20px; right: 20px;
+            background: var(--primary-color); color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3); align-items: center; justify-content: center;
+            font-size: 1.5rem; z-index: 200; cursor: pointer;
         }
         .cart-count {
-            position: absolute;
-            top: -5px; right: -5px;
-            background: #ff4d4f;
-            color: white;
-            font-size: 0.8rem;
-            width: 24px; height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            border: 2px solid white;
+            position: absolute; top: -5px; right: -5px; background: #ff4d4f;
+            color: white; font-size: 0.8rem; width: 24px; height: 24px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; border: 2px solid white;
         }
 
-        /* Toast Notification */
+        /* --- Modals (Shared Styles) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7); display: none;
+            justify-content: center; align-items: center; z-index: 500;
+        }
+        .modal-content {
+            background: var(--card-bg); border-radius: 15px; width: 90%; max-width: 600px;
+            max-height: 90vh; overflow-y: auto; position: relative; padding: 25px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .modal-close {
+            position: absolute; top: 15px; right: 15px; font-size: 1.5rem;
+            cursor: pointer; color: #999;
+        }
+
+        /* Product Detail Styles */
+        .detail-img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+        .detail-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+        .detail-price { color: var(--primary-color); font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+
+        /* --- Address Form Styles --- */
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-label { display: block; font-weight: 600; margin-bottom: 5px; }
+        .form-input {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;
+            font-family: 'Prompt', sans-serif; font-size: 1rem; box-sizing: border-box;
+        }
+        .form-input:focus { border-color: var(--primary-color); outline: none; }
+        textarea.form-input { resize: vertical; height: 80px; }
+
+        /* Payment Info Box */
+        .payment-info {
+            background: #f7f7f7;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .payment-title { font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
+        .payment-detail { font-size: 1.1rem; line-height: 1.4; }
+        .promptpay-number { font-size: 1.4rem; font-weight: 700; color: #333; }
+
+        /* Toast */
         .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-            z-index: 300;
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.8); color: white; padding: 10px 20px;
+            border-radius: 30px; opacity: 0; visibility: hidden; transition: 0.3s; z-index: 600;
         }
         .toast.show { opacity: 1; visibility: visible; bottom: 50px; }
 
-        /* --- Mobile Responsive --- */
         @media (max-width: 768px) {
             .container { flex-direction: column; }
-            .cart-area { display: none; } /* ซ่อน Sidebar ในมือถือ */
-            .cart-area.active { /* จะโชว์เมื่อกดปุ่ม */
-                display: block;
-                position: fixed;
-                top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0,0,0,0.5);
-                z-index: 150;
-                padding: 0;
-            }
-            .cart-box {
-                position: absolute;
-                bottom: 0; left: 0; width: 100%;
-                border-radius: 20px 20px 0 0;
-                padding: 30px 20px;
-                box-sizing: border-box;
-                animation: slideUp 0.3s;
-            }
+            .cart-area { display: none; }
+            .cart-area.active { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 150; }
+            .cart-box { position: absolute; bottom: 0; left: 0; width: 100%; border-radius: 20px 20px 0 0; animation: slideUp 0.3s; top: auto; }
             .mobile-cart-btn { display: flex; }
-            
             @keyframes slideUp { from {transform: translateY(100%);} to {transform: translateY(0);} }
         }
     </style>
@@ -257,196 +192,270 @@
 <body>
 
     <header>
-        <div class="brand-name">SHOP<span>LINE</span></div>
+        <div class="brand-name">สยามศรัทธา</div>
         <div style="font-size:0.9rem; color:#666;">สินค้าคุณภาพส่งฟรี</div>
     </header>
 
     <div class="hero-banner">
-        <div class="hero-overlay">WELCOME TO OUR SHOP</div>
+        <div class="hero-overlay">สยามศรัทธา</div>
     </div>
 
     <div class="container">
-        
         <div class="product-area">
-            <div class="section-title">สินค้าแนะนำ</div>
-            
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">เสื้อยืด Cotton 100% สีขาว</div>
-                        <div class="product-price">290 ฿</div>
-                        <button class="btn-add" onclick="addToCart('เสื้อยืด Cotton สีขาว', 290)">
-                            <i class="fas fa-cart-plus"></i> เพิ่มใส่ตะกร้า
-                        </button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">รองเท้าผ้าใบ Sneaker แดง</div>
-                        <div class="product-price">1,590 ฿</div>
-                        <button class="btn-add" onclick="addToCart('รองเท้าผ้าใบ Sneaker แดง', 1590)">
-                            <i class="fas fa-cart-plus"></i> เพิ่มใส่ตะกร้า
-                        </button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">นาฬิกาข้อมือ Smart Watch</div>
-                        <div class="product-price">2,900 ฿</div>
-                        <button class="btn-add" onclick="addToCart('นาฬิกา Smart Watch', 2900)">
-                            <i class="fas fa-cart-plus"></i> เพิ่มใส่ตะกร้า
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">หูฟัง Headphone ไร้สาย</div>
-                        <div class="product-price">890 ฿</div>
-                        <button class="btn-add" onclick="addToCart('หูฟัง Headphone', 890)">
-                            <i class="fas fa-cart-plus"></i> เพิ่มใส่ตะกร้า
-                        </button>
-                    </div>
-                </div>
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="ค้นหาสินค้า...">
             </div>
+            
+            <div class="section-title">สินค้าแนะนำ</div>
+            <div class="product-grid" id="productGrid"></div>
         </div>
 
         <div id="cartOverlay" class="cart-area" onclick="toggleCart(event)">
-            <div class="cart-box" onclick="event.stopPropagation()"> <div class="cart-header">
+            <div class="cart-box" onclick="event.stopPropagation()">
+                <div class="cart-header">
                     ตะกร้าสินค้า <span style="font-size:0.9rem; color:#999">(<span id="itemCount">0</span> ชิ้น)</span>
                     <span style="float:right; cursor:pointer; display:none;" class="close-mobile" onclick="toggleCart(event)">✕</span>
                 </div>
-
                 <ul id="cartList" class="cart-list">
                     <li style="text-align:center; color:#999; padding:20px;">ตะกร้าว่างเปล่า</li>
                 </ul>
-
                 <div class="cart-summary">
-                    <div class="total-row">
-                        <span>ยอดรวม</span>
-                        <span id="totalPrice">0 ฿</span>
-                    </div>
-                    <button id="btnCheckout" class="btn-checkout" onclick="checkoutToLine()" disabled>
-                        <i class="fab fa-line"></i> สั่งซื้อผ่าน LINE
+                    <div class="total-row"><span>ยอดรวม</span><span id="totalPrice">0 ฿</span></div>
+                    <button id="btnCheckout" class="btn-checkout" onclick="openAddressModal()" disabled>
+                        สั่งซื้อสินค้า
                     </button>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="mobile-cart-btn" onclick="toggleCart(event)">
-        <i class="fas fa-shopping-cart"></i>
-        <div class="cart-count" id="mobileCount">0</div>
+        <i class="fas fa-shopping-cart"></i><div class="cart-count" id="mobileCount">0</div>
     </div>
-
     <div id="toast" class="toast">เพิ่มลงตะกร้าเรียบร้อย</div>
 
+    <div id="productModal" class="modal-overlay" onclick="closeModal('productModal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal('productModal')">✕</span>
+            <img id="detailImg" class="detail-img" src="">
+            <div id="detailName" class="detail-name"></div>
+            <div id="detailPrice" class="detail-price"></div>
+            <div id="detailDesc" style="color:#666; line-height:1.6; margin-bottom:20px;"></div>
+            <button id="detailAddToCartBtn" class="btn-checkout">เพิ่มลงตะกร้าสินค้า</button>
+        </div>
+    </div>
+
+    <div id="addressModal" class="modal-overlay" onclick="closeModal('addressModal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal('addressModal')">✕</span>
+            <div style="font-size:1.5rem; font-weight:bold; margin-bottom:20px; text-align:center;">📦 ยืนยันคำสั่งซื้อ</div>
+            
+            <div class="payment-info">
+                <div class="payment-title"><i class="fas fa-qrcode"></i> กรุณาโอนเงินมาที่</div>
+                <div class="payment-detail">
+                    **PromptPay (พร้อมเพย์)**<br>
+                    <span class="promptpay-number">091-731-9153</span><br>
+                    ชื่อบัญชี: ชัชวาล มังคละ
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">ชื่อ-นามสกุล ผู้รับ</label>
+                <input type="text" id="cusName" class="form-input" placeholder="กรอกชื่อผู้รับ">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">เบอร์โทรศัพท์</label>
+                <input type="tel" id="cusPhone" class="form-input" placeholder="08x-xxx-xxxx">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">ที่อยู่จัดส่ง</label>
+                <textarea id="cusAddress" class="form-input" placeholder="บ้านเลขที่, ถนน, แขวง/เขต, จังหวัด, รหัสไปรษณีย์"></textarea>
+            </div>
+
+            <button class="btn-checkout" onclick="confirmOrderToLine()">
+                <i class="fab fa-line"></i> ยืนยันการสั่งซื้อและแจ้งโอน
+            </button>
+        </div>
+    </div>
+
     <script>
+        // --- Config ---
+        const lineID = "@782fcimj"; // 🟢 อัปเดต LINE ID แล้ว
+
+        // --- Data ---
+        const products = [
+            { id: 1, name: 'เสื้อยืด Cotton 100% สีขาว', price: 290, desc: 'เสื้อยืดคอตตอนแท้ 100% สัมผัสนุ่ม สวมใส่สบาย', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+            { id: 2, name: 'รองเท้าผ้าใบ Sneaker แดง', price: 1590, desc: 'รองเท้าผ้าใบดีไซน์คลาสสิก สีแดงสดใส', img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+            { id: 3, name: 'นาฬิกาข้อมือ Smart Watch', price: 2900, desc: 'นาฬิกาอัจฉริยะ ติดตามกิจกรรม', img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+            { id: 4, name: 'หูฟัง Headphone ไร้สาย', price: 890, desc: 'หูฟังแบบครอบหูไร้สาย ให้เสียงเบสหนักแน่น', img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+        ];
+
         let cart = [];
 
+        // --- Functions ---
+        function createProductGrid(items = products) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            if (items.length === 0) grid.innerHTML = '<p style="padding:20px; color:#999;">ไม่พบสินค้า</p>';
+            
+            items.forEach(p => {
+                const div = document.createElement('div');
+                div.className = 'product-card';
+                div.innerHTML = `
+                    <div class="product-img-box" onclick="showProductDetail(${p.id})">
+                        <img src="${p.img}" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(${p.id})">${p.name}</div>
+                        <div class="product-price">${p.price.toLocaleString()} ฿</div>
+                        <button class="btn-add" onclick="addToCart('${p.name.replace(/'/g, "\\'")}', ${p.price})">ใส่ตะกร้า</button>
+                    </div>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        function searchProducts() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(term));
+            createProductGrid(filtered);
+        }
+
         function addToCart(name, price) {
-            cart.push({ name: name, price: price });
+            cart.push({ name, price });
             renderCart();
             showToast();
         }
 
         function removeFromCart(index) {
-            cart.splice(index, 1); // ลบสินค้าตามลำดับ
+            cart.splice(index, 1);
             renderCart();
         }
 
         function renderCart() {
-            const cartList = document.getElementById('cartList');
-            const totalPriceEl = document.getElementById('totalPrice');
-            const btnCheckout = document.getElementById('btnCheckout');
-            const itemCount = document.getElementById('itemCount');
-            const mobileCount = document.getElementById('mobileCount');
+            const list = document.getElementById('cartList');
+            const totalEl = document.getElementById('totalPrice');
+            const btn = document.getElementById('btnCheckout');
             
-            cartList.innerHTML = '';
+            list.innerHTML = '';
             let total = 0;
 
             if (cart.length === 0) {
-                cartList.innerHTML = '<li style="text-align:center; color:#999; padding:20px;">ตะกร้าว่างเปล่า</li>';
-                btnCheckout.disabled = true;
+                list.innerHTML = '<li style="text-align:center; color:#999; padding:20px;">ตะกร้าว่างเปล่า</li>';
+                btn.disabled = true;
             } else {
                 cart.forEach((item, index) => {
                     total += item.price;
                     const li = document.createElement('li');
                     li.className = 'cart-item';
-                    li.innerHTML = `
-                        <div class="item-name">${index+1}. ${item.name}</div>
-                        <div class="item-price">${item.price.toLocaleString()}</div>
-                        <button class="btn-remove" onclick="removeFromCart(${index})"><i class="fas fa-trash"></i></button>
-                    `;
-                    cartList.appendChild(li);
+                    li.innerHTML = `<div>${index+1}. ${item.name}</div><div style="min-width:80px; text-align:right;">${item.price.toLocaleString()} <button class="btn-remove" onclick="removeFromCart(${index})">×</button></div>`;
+                    list.appendChild(li);
                 });
-                btnCheckout.disabled = false;
+                btn.disabled = false;
             }
+            
+            totalEl.innerText = total.toLocaleString() + ' ฿';
+            document.getElementById('itemCount').innerText = cart.length;
+            document.getElementById('mobileCount').innerText = cart.length;
+        }
 
-            const totalStr = total.toLocaleString() + ' ฿';
-            totalPriceEl.innerText = totalStr;
-            itemCount.innerText = cart.length;
-            mobileCount.innerText = cart.length;
+        function showProductDetail(id) {
+            const p = products.find(x => x.id === id);
+            if(!p) return;
+            document.getElementById('detailImg').src = p.img;
+            document.getElementById('detailName').innerText = p.name;
+            document.getElementById('detailPrice').innerText = p.price.toLocaleString() + ' ฿';
+            document.getElementById('detailDesc').innerText = p.desc;
+            document.getElementById('detailAddToCartBtn').onclick = () => {
+                addToCart(p.name, p.price);
+                closeModal('productModal');
+            };
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        // --- Modal Control ---
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
         }
 
         function toggleCart(e) {
-            // เช็คว่าเป็นมือถือไหม โดยดูจาก display ของ mobile-cart-btn หรือขนาดจอ
             if (window.innerWidth <= 768) {
-                const cartArea = document.getElementById('cartOverlay');
-                const closeBtn = document.querySelector('.close-mobile');
-                
-                // สลับคลาส active
-                if (cartArea.classList.contains('active')) {
-                    cartArea.classList.remove('active');
-                    closeBtn.style.display = 'none';
-                } else {
-                    cartArea.classList.add('active');
-                    closeBtn.style.display = 'block';
-                }
+                const cart = document.getElementById('cartOverlay');
+                cart.classList.toggle('active');
             }
         }
 
         function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(() => { toast.classList.remove('show'); }, 2000);
+            const t = document.getElementById('toast');
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
         }
 
-        function checkoutToLine() {
-            // 🔴 แก้ ID ร้านตรงนี้ครับ
-            const lineID = "@782fcimj"; 
-            
+        // --- Checkout Logic ---
+        
+        function openAddressModal() {
             if(cart.length === 0) return;
+            document.getElementById('addressModal').style.display = 'flex';
+            document.getElementById('cartOverlay').classList.remove('active');
+        }
 
+        function confirmOrderToLine() {
+            // รับค่าจากฟอร์ม
+            const name = document.getElementById('cusName').value;
+            const phone = document.getElementById('cusPhone').value;
+            const address = document.getElementById('cusAddress').value;
+
+            // ตรวจสอบว่ากรอกครบไหม
+            if(!name || !phone || !address) {
+                alert('กรุณากรอกข้อมูลจัดส่งให้ครบถ้วนครับ');
+                return;
+            }
+
+            // สรุปรายการสินค้า
             let total = 0;
             let itemsText = "";
-            cart.forEach((item) => {
+            cart.forEach(item => {
                 total += item.price;
                 itemsText += `- ${item.name} (${item.price.toLocaleString()} บ.)\n`;
             });
 
-            const message = `🛒 เปิดบิลสั่งซื้อใหม่ครับ\n\n${itemsText}\n--------------------\n💰 ยอดรวม: ${total.toLocaleString()} บาท\n--------------------\nขอเลขบัญชีด้วยครับ`;
+            // สร้างข้อความ LINE พร้อมข้อมูลพร้อมเพย์ และกระตุ้นให้แนบสลิป
+            const message = `🛒 *คำสั่งซื้อจากเว็บไซต์ สยามศรัทธา* \n` +
+                            `--------------------\n` +
+                            `💰 *ยอดรวม:* ${total.toLocaleString()} บาท\n` +
+                            `\n` +
+                            `✅ *ข้อมูลลูกค้า:*\n` +
+                            `👤 ชื่อ: ${name}\n` +
+                            `📞 โทร: ${phone}\n` +
+                            `🏠 ที่อยู่: ${address}\n` +
+                            `--------------------\n` +
+                            `📦 *รายการสินค้า:*\n${itemsText}\n` +
+                            `--------------------\n` +
+                            `🏦 *ข้อมูลชำระเงิน:*\n` +
+                            `พร้อมเพย์: 0917319153\n` +
+                            `ชื่อบัญชี: ชัชวาล มังคละ\n` +
+                            `\n` +
+                            `➡️ *รบกวนลูกค้าแนบสลิปการโอนเงินกลับมาในแชทนี้ได้เลยครับ*`;
+
+            // ส่งไป LINE App
             const encodedMessage = encodeURIComponent(message);
-            
-            // ใช้ line:// เพื่อบังคับเปิดแอป
-            const lineUrl = `line://oaMessage/${lineID}/?${encodedMessage}`;
-            window.location.href = lineUrl;
+            window.location.href = `line://oaMessage/${lineID}/?${encodedMessage}`;
+
+            // ล้างตะกร้าและฟอร์มหลังจากส่งคำสั่งซื้อแล้ว (UX Improvement)
+            cart = [];
+            renderCart();
+            closeModal('addressModal');
+            document.getElementById('cusName').value = '';
+            document.getElementById('cusPhone').value = '';
+            document.getElementById('cusAddress').value = '';
         }
+
+        // Init
+        createProductGrid();
+        renderCart();
     </script>
 
 </body>
